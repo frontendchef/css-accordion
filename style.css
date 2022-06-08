@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+p {
+  margin: 0;
+}
+
+body {
+  margin-inline: auto;
+  width: min(650px, 100%);
+  padding: 1rem;
+  background-color: #fafafa;
+
+  font-family: "Roboto";
+  line-height: 1.65;
+}
+
+.tab__header {
+  position: relative;
+
+  display: flex;
+  justify-content: space-between;
+
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+  width: 100%;
+  background-color: #3f51b5;
+
+  color: white;
+  cursor: pointer;
+
+  transition: margin 300ms ease;
+}
+
+.tab:not(:first-of-type) .tab__toggle:checked ~ .tab__header {
+  margin-top: 1rem;
+}
+
+.tab:not(:last-of-type) .tab__toggle:checked ~ .tab__content {
+  margin-bottom: 1rem;
+}
+
+.tab__header::after {
+  content: "\276F";
+  transform: rotate(90deg);
+}
+
+.tab__toggle:checked ~ .tab__header::after {
+  transform: rotate(270deg);
+}
+
+.tab__toggle {
+  display: none;
+}
+
+.tab__content {
+  max-height: 25vh;
+  padding-inline: 0.75rem;
+  padding-block: 1rem;
+
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 20%);
+  background-color: white;
+  overflow: hidden;
+
+  transition-property: max-height, padding;
+  transition-duration: 300ms;
+}
+
+.tab__toggle:not(:checked) ~ .tab__content {
+  max-height: 0;
+  padding-block: 0;
+}
